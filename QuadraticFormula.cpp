@@ -14,45 +14,45 @@ int main()
 	_asm
 	{
 		//Find x1 = -1b*bb*4ac**-sqrt+2a*/
-		fld negativeOne;
-		fld b;
-		fmul;
-		fld b;
-		fld b;
-		fmul;
-		fld four;
-		fld a;
-		fld c;
-		fmul;
-		fmul;
-		fsub;
-		fsqrt;
-		fadd;
-		fld two;
-		fld a;
-		fmul;
-		fdiv;
+		fld negativeOne; // -1
+		fld b;           // -1, b
+		fmul;            // -1*b
+		fld b;           // -1*b, b
+		fld b;           // -1*b, b, b
+		fmul;            // -1*b, b*b
+		fld four;        // -1*b, b*b, 4
+		fld a;           // -1*b, b*b, 4, a
+		fld c;           // -1*b, b*b, 4, a, c
+		fmul;            // -1*b, b*b, 4, a*c
+		fmul;            // -1*b, b*b, 4*a*c
+		fsub;            // -1*b, b*b-4*a*c
+		fsqrt;           // -1*b, (b*b-4*a*c)^(1/2)
+		fadd;            // -1*b+(b*b-4*a*c)^(1/2)
+		fld two;         // -1*b+(b*b-4*a*c)^(1/2), 2
+		fld a;           // -1*b+(b*b-4*a*c)^(1/2), 2, a
+		fmul;            // -1*b+(b*b-4*a*c)^(1/2), 2*a
+		fdiv;            // (-1*b+(b*b-4*a*c)^(1/2))/(2*a)
 		fstp x1;
 
 		//Find x2 = -1b*bb*4ac**-sqrt-2a*/
-		fld negativeOne;
-		fld b;
-		fmul;
-		fld b;
-		fld b;
-		fmul;
-		fld four;
-		fld a;
-		fld c;
-		fmul;
-		fmul;
-		fsub;
-		fsqrt;
-		fsub;
-		fld two;
-		fld a;
-		fmul;
-		fdiv;
+		fld negativeOne; // -1
+		fld b;           // -1, b
+		fmul;            // -1*b
+		fld b;           // -1*b, b
+		fld b;           // -1*b, b, b
+		fmul;            // -1*b, b*b
+		fld four;        // -1*b, b*b, 4
+		fld a;           // -1*b, b*b, 4, a
+		fld c;           // -1*b, b*b, 4, a, c
+		fmul;            // -1*b, b*b, 4, a*c
+		fmul;            // -1*b, b*b, 4*a*c
+		fsub;            // -1*b, b*b-4*a*c
+		fsqrt;           // -1*b, (b*b-4*a*c)^(1/2)
+		fsub;            // -1*b-(b*b-4*a*c)^(1/2)
+		fld two;         // -1*b-(b*b-4*a*c)^(1/2), 2
+		fld a;           // -1*b-(b*b-4*a*c)^(1/2), 2, a
+		fmul;            // -1*b-(b*b-4*a*c)^(1/2), 2*a
+		fdiv;            // (-1*b-(b*b-4*a*c)^(1/2))/(2*a)
 		fstp x2;
 	}
 
